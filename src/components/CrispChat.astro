@@ -1,0 +1,23 @@
+---
+---
+<script>
+  import { Crisp } from 'crisp-sdk-web';
+
+  // Initialize Crisp
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "VOTRE_WEBSITE_ID"; // Vous devrez remplacer ceci par votre ID Crisp
+  
+  // Configuration du chat
+  window.$crisp.push(["set", "user:nickname", ["Visiteur"]]);
+  window.$crisp.push(["set", "user:email", [""]]);
+  window.$crisp.push(["do", "chat:open"]);
+
+  // Charger Crisp
+  (function() {
+    var d = document;
+    var s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+</script>

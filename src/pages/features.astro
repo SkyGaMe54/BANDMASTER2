@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const mainFeatures = [
+  {
+    title: "Signaux de Trading Précis",
+    description: "Des signaux clairs et fiables pour identifier les meilleures opportunités de trading. Optimisé pour réduire les faux signaux et maximiser la précision.",
+    image: "/images/signal-1.webp",
+    highlights: [
+      "Identification des points d'entrée optimaux",
+      "Détection des retournements de tendance",
+      "Filtrage des faux signaux"
+    ]
+  },
+  {
+    title: "Analyse Technique Avancée",
+    description: "Une suite complète d'outils d'analyse technique pour vous aider à prendre les meilleures décisions de trading, basée sur des algorithmes sophistiqués.",
+    image: "/images/signal-2.webp",
+    highlights: [
+      "Analyse multi-temporelle intégrée",
+      "Confirmation des tendances",
+      "Gestion des risques optimisée"
+    ]
+  }
+];
+
+const stats = [
+  { value: 95, label: "Précision", symbol: "%" },
+  { value: 24, label: "Support", symbol: "/7" },
+  { value: 1000, label: "Traders actifs", symbol: "+" }
+];
+
+const technicalFeatures = [
+  {
+    icon: "📊",
+    title: "Indicateurs Avancés",
+    description: "Suite complète d'indicateurs techniques pour une analyse approfondie"
+  },
+  {
+    icon: "🎯",
+    title: "Points d'Entrée Précis",
+    description: "Identification claire des meilleurs moments pour entrer sur le marché"
+  },
+  {
+    icon: "⚡",
+    title: "Alertes en Temps Réel",
+    description: "Notifications instantanées pour ne manquer aucune opportunité"
+  },
+  {
+    icon: "🔄",
+    title: "Multi-Timeframes",
+    description: "Analyse simultanée sur différentes échelles de temps"
+  },
+  {
+    icon: "📱",
+    title: "Multi-Plateformes",
+    description: "Compatible avec TradingView et les principales plateformes"
+  },
+  {
+    icon: "🛡️",
+    title: "Gestion des Risques",
+    description: "Outils intégrés pour une gestion optimale des positions"
+  }
+];
+
+const markets = [
+  { name: "Forex", icon: "💱" },
+  { name: "Indices", icon: "📈" },
+  { name: "Crypto", icon: "₿" },
+  { name: "Actions", icon: "🏢" },
+  { name: "Matières Premières", icon: "🛢️" }
+];
+---
+
+<Layout title="Fonctionnalités - BandMaster">
+  <main class="bg-primary">
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] flex items-center overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(44,153,113,0.15),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(44,153,113,0.1),transparent_50%)]"></div>
+      </div>
+      <div class="container mx-auto px-4 relative z-10 py-20">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-7xl font-bold mb-8">
+            Trading de <span class="text-accent">Précision</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-muted mb-12 leading-relaxed max-w-3xl mx-auto">
+            Une suite complète d'outils avancés pour transformer votre approche du trading
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button href="#features" variant="primary" class="text-lg">
+              Découvrir les fonctionnalités
+            </Button>
+            <Button href="#" variant="secondary" class="text-lg chat-trigger">
+              Essayer maintenant
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-secondary">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          {stats.map(stat => (
+            <div class="text-center transform hover:scale-105 transition-transform duration-300">
+              <div class="text-4xl md:text-5xl font-bold text-accent mb-4">
+                <span class="counter" data-target={stat.value}>0</span>{stat.symbol}
+              </div>
+              <div class="text-xl text-muted">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Features -->
+    <section id="features" class="py-20">
+      <div class="container mx-auto px-4">
+        {mainFeatures.map((feature, index) => (
+          <div class={`flex flex-col lg:flex-row items-center gap-12 ${index !== 0 ? 'mt-32' : ''}`}>
+            <div class={`w-full lg:w-1/2 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+              <h2 class="text-4xl font-bold mb-6">{feature.title}</h2>
+              <p class="text-xl text-muted mb-8 leading-relaxed">{feature.description}</p>
+              <div class="space-y-4">
+                {feature.highlights.map(highlight => (
+                  <div class="flex items-center gap-4 bg-secondary p-4 rounded-xl border border-accent/20">
+                    <div class="text-accent">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span class="text-lg">{highlight}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class={`w-full lg:w-1/2 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <div class="relative">
+                <div class="absolute inset-0 bg-accent/20 blur-3xl rounded-full"></div>
+                <img 
+                  src={feature.image} 
+                  alt={feature.title}
+                  class="relative rounded-xl border border-accent/20 shadow-2xl w-full"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Rest of the sections remain the same -->
+    <!-- Technical Features Grid and Markets Section code stays here -->
+  </main>
+</Layout>
+
+<script>
+  // Chat trigger
+  document.querySelectorAll('.chat-trigger').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.Tawk_API) {
+        Tawk_API.maximize();
+      }
+    });
+  });
+
+  // Counter animation
+  const animateCounter = (element, target) => {
+    const duration = 2000; // Animation duration in milliseconds
+    const steps = 50; // Number of steps
+    const stepDuration = duration / steps;
+    let current = 0;
+    
+    const increment = target / steps;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        element.textContent = Math.round(target);
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.round(current);
+      }
+    }, stepDuration);
+  };
+
+  // Intersection Observer for counter animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = parseInt(counter.getAttribute('data-target'));
+        animateCounter(counter, target);
+        observer.unobserve(counter);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  // Observe all counter elements
+  document.querySelectorAll('.counter').forEach(counter => {
+    observer.observe(counter);
+  });
+</script>

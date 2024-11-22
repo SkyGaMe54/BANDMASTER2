@@ -1,0 +1,73 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary';
+  class?: string;
+}
+
+const { href, variant = 'primary', class: className = '' } = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold transition-all duration-300 text-center relative overflow-hidden';
+const variants = {
+  primary: `
+    bg-accent text-primary
+    shadow-[0_0_10px_rgba(44,153,113,0.3)]
+    hover:shadow-[0_0_20px_rgba(44,153,113,0.5)]
+    hover:bg-accent-light
+    hover:-translate-y-0.5
+    after:absolute
+    after:inset-0
+    after:rounded-full
+    after:border-2
+    after:border-accent
+    after:opacity-0
+    hover:after:opacity-100
+    after:transition-opacity
+    after:duration-300
+    before:absolute
+    before:inset-0
+    before:rounded-full
+    before:bg-accent
+    before:blur-lg
+    before:opacity-0
+    hover:before:opacity-30
+    before:transition-opacity
+    before:duration-300
+    before:-z-10
+  `,
+  secondary: `
+    bg-transparent text-text
+    border-2 border-accent
+    shadow-[0_0_8px_rgba(44,153,113,0.2)]
+    hover:shadow-[0_0_15px_rgba(44,153,113,0.4)]
+    hover:border-accent-light
+    hover:bg-accent/10
+    hover:-translate-y-0.5
+    after:absolute
+    after:inset-0
+    after:rounded-full
+    after:border-2
+    after:border-accent
+    after:opacity-0
+    hover:after:opacity-100
+    after:transition-opacity
+    after:duration-300
+    before:absolute
+    before:inset-0
+    before:rounded-full
+    before:bg-accent
+    before:blur-lg
+    before:opacity-0
+    hover:before:opacity-20
+    before:transition-opacity
+    before:duration-300
+    before:-z-10
+  `,
+};
+---
+
+<a href={href} class:list={[baseStyles, variants[variant], className]}>
+  <span class="relative z-10">
+    <slot />
+  </span>
+</a>

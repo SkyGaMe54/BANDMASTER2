@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  {
+    question: "Qu'est-ce que BandMaster ?",
+    answer: "BandMaster est un indicateur avancé conçu pour vous aider à identifier les tendances et opportunités sur les marchés financiers. Cet outil utilise des calculs spécifiques pour réduire les faux signaux et optimiser vos entrées et sorties."
+  },
+  {
+    question: "Quel est le coût de l'indicateur ?",
+    answer: "L'abonnement à BandMaster est de 150€ par mois."
+  },
+  {
+    question: "Comment puis-je payer l'abonnement ?",
+    answer: "Le paiement s'effectue par virement bancaire (IBAN) ou en crypto. Assurez-vous d'inclure votre pseudo TradingView dans les commentaires du transfert."
+  },
+  {
+    question: "Comment obtenir l'accès après avoir payé ?",
+    answer: "Une fois votre paiement confirmé, envoyez-nous votre pseudo TradingView et une preuve de paiement (capture d'écran ou justificatif)."
+  },
+  {
+    question: "Quand dois-je renouveler mon abonnement ?",
+    answer: "Le renouvellement doit être effectué chaque mois, à la date de votre premier paiement pour éviter toute interruption d'accès."
+  },
+  {
+    question: "Existe-t-il une période d'essai ?",
+    answer: "Oui, chaque nouveau client bénéficie d'une période d'essai gratuite pour tester la puissance de l'indicateur avant de s'engager."
+  },
+  {
+    question: "Comment configurer l'indicateur sur TradingView ?",
+    answer: "Un guide détaillé est disponible dans le canal Slack dédié, intitulé 'Ressources Indicateur'."
+  },
+  {
+    question: "À qui s'adresse cet indicateur ?",
+    answer: "BandMaster est adapté à tous les traders, qu'ils soient débutants ou expérimentés, souhaitant maximiser leurs résultats."
+  },
+  {
+    question: "Quels marchés sont les plus adaptés à BandMaster ?",
+    answer: "BandMaster est polyvalent et fonctionne sur de nombreux marchés : Forex, indices, matières premières, cryptomonnaies, et toutes les unités de temps."
+  },
+  {
+    question: "Est-ce que BandMaster fournit des alertes automatiques ?",
+    answer: "Oui, BandMaster inclut des alertes configurables pour signaler les croisements, retournements de tendance, et autres conditions clés."
+  }
+];
+---
+
+<Layout title="FAQ - BandMaster">
+  <main class="py-20">
+    <div class="container mx-auto px-4">
+      <h1 class="text-6xl font-bold text-center mb-20">
+        Questions <span class="text-accent">Fréquentes</span>
+      </h1>
+
+      <div class="max-w-3xl mx-auto space-y-8">
+        {faqs.map((faq, index) => (
+          <div class="bg-secondary rounded-xl overflow-hidden border border-accent/20">
+            <button
+              class="w-full text-left p-8 focus:outline-none hover:bg-accent/10 transition-colors duration-200"
+              id={`faq-button-${index}`}
+            >
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold pr-8">{faq.question}</h3>
+                <svg
+                  class="w-6 h-6 transform transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </button>
+            <div
+              class="hidden px-8 pb-8 text-muted"
+              id={`faq-answer-${index}`}
+            >
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  document.querySelectorAll('[id^="faq-button-"]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const index = button.id.split('-').pop();
+      const answer = document.getElementById(`faq-answer-${index}`);
+      const svg = button.querySelector('svg');
+      
+      answer.classList.toggle('hidden');
+      svg.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+      
+      // Fermer les autres réponses
+      document.querySelectorAll('[id^="faq-answer-"]').forEach((el) => {
+        if (el.id !== `faq-answer-${index}`) {
+          el.classList.add('hidden');
+          const otherButton = document.getElementById(`faq-button-${el.id.split('-').pop()}`);
+          otherButton.querySelector('svg').style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  });
+</script>

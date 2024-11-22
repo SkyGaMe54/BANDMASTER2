@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const features = [
+  {
+    icon: "📊",
+    title: "Fiabilité Maximale",
+    description: "Conçu pour éviter les signaux contradictoires et offrir une clarté optimale dans vos analyses."
+  },
+  {
+    icon: "👥",
+    title: "Communauté Active",
+    description: "Rejoignez notre communauté Slack pour partager vos expériences et apprendre des autres traders."
+  },
+  {
+    icon: "🎯",
+    title: "Adaptabilité Totale",
+    description: "Compatible avec tous les marchés et timeframes pour s'adapter à votre style de trading."
+  }
+];
+---
+
+<Layout title="À propos - BandMaster">
+  <main>
+    <section class="py-20 bg-primary">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center mb-8">À propos de BandMaster</h1>
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="text-xl mb-8">
+            BandMaster est né de la volonté de créer un indicateur de trading qui allie simplicité et efficacité. Notre mission est d'aider les traders à prendre des décisions plus éclairées grâce à des signaux clairs et fiables.
+          </p>
+          <Button href="/contact">Rejoindre la communauté</Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-secondary">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Ce qui nous distingue</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {features.map(feature => (
+            <div class="bg-primary p-8 rounded-lg border border-accent/20">
+              <div class="text-4xl text-accent mb-4">{feature.icon}</div>
+              <h3 class="text-xl font-bold mb-3">{feature.title}</h3>
+              <p class="text-muted">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-primary">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold text-center mb-8">Notre Engagement</h2>
+        <div class="space-y-6">
+          <p class="text-lg">
+            BandMaster s'engage à fournir un outil de qualité professionnelle, soutenu par une communauté active et un support réactif. Nous croyons en la transparence et la simplicité, c'est pourquoi nous offrons une période d'essai gratuite à tous les nouveaux utilisateurs.
+          </p>
+          <p class="text-lg">
+            Notre indicateur est constamment optimisé pour s'adapter aux conditions changeantes du marché, garantissant ainsi des performances optimales pour tous nos utilisateurs.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

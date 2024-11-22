@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const stats = [
+  { value: 24, label: 'Support communautaire', symbol: '/7' },
+  { value: 100, label: 'Satisfaction client', symbol: '%' },
+  { value: 1000, label: 'Traders actifs', symbol: '+' }
+];
+
+const features = [
+  {
+    title: "Signaux précis",
+    description: "Identifiez les meilleures opportunités avec des signaux clairs et fiables.",
+    icon: "📊"
+  },
+  {
+    title: "Support Heikin Ashi",
+    description: "Optimisé pour les chandeliers Heikin Ashi, réduisant les faux signaux.",
+    icon: "🎯"
+  },
+  {
+    title: "Multi-marchés",
+    description: "Compatible avec Forex, indices, matières premières et cryptomonnaies.",
+    icon: "🌐"
+  }
+];
+
+const steps = [
+  {
+    number: "01",
+    title: "Contactez-nous",
+    description: "Utilisez le chat en bas à droite pour plus d'informations"
+  },
+  {
+    number: "02",
+    title: "Effectuez le virement",
+    description: "Accédez à l'indicateur dès réception du paiement"
+  },
+  {
+    number: "03",
+    title: "Envoyez vos informations",
+    description: "Preuve de paiement et pseudo TradingView"
+  },
+  {
+    number: "04",
+    title: "Commencez à trader",
+    description: "Profitez de signaux clairs et précis"
+  }
+];
+
+const testimonials = [
+  {
+    name: "Thomas R.",
+    role: "Trader Forex",
+    content: "BandMaster a complètement transformé mon approche du trading. Les signaux sont d'une précision remarquable.",
+    avatar: "/images/avatar-1.webp"
+  },
+  {
+    name: "Sophie M.",
+    role: "Trader Crypto",
+    content: "La clarté des signaux et la réduction des faux signaux m'ont permis d'améliorer significativement mes résultats.",
+    avatar: "/images/avatar-2.webp"
+  },
+  {
+    name: "Marc L.",
+    role: "Trader Indices",
+    content: "Un outil indispensable pour tout trader sérieux. Le support communautaire est également excellent.",
+    avatar: "/images/avatar-3.webp"
+  }
+];
+---
+
+<Layout title="Trading - L'indicateur de trading de confiance">
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-primary overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(44,153,113,0.1),transparent_50%)]"></div>
+      <div class="container mx-auto px-4 py-24 relative">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            Trading simplifié avec <span class="text-accent">précision</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-muted mb-8">
+            L'indicateur qui transforme vos analyses en décisions précises
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="#" variant="primary" class="chat-trigger">
+              Commencer maintenant
+            </Button>
+            <Button href="#features" variant="secondary">
+              En savoir plus
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-secondary py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {stats.map(stat => (
+            <div class="text-center transform hover:scale-105 transition-transform duration-300">
+              <div class="text-3xl md:text-4xl font-bold text-accent mb-2">
+                <span class="counter" data-target={stat.value}>0</span>{stat.symbol}
+              </div>
+              <div class="text-muted">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-20 bg-primary">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+          Pourquoi nous choisir ?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {features.map(feature => (
+            <div class="bg-secondary p-8 rounded-xl border border-accent/20 hover:border-accent transition-colors">
+              <div class="text-4xl mb-4">{feature.icon}</div>
+              <h3 class="text-xl font-bold mb-3">{feature.title}</h3>
+              <p class="text-muted">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-secondary">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">Ce qu'en disent nos utilisateurs</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {testimonials.map(testimonial => (
+            <div class="bg-primary p-8 rounded-xl border border-accent/20">
+              <div class="flex items-center mb-6">
+                <img 
+                  src={testimonial.avatar} 
+                  alt={testimonial.name}
+                  class="w-12 h-12 rounded-full mr-4"
+                />
+                <div>
+                  <h3 class="font-bold">{testimonial.name}</h3>
+                  <p class="text-muted text-sm">{testimonial.role}</p>
+                </div>
+              </div>
+              <p class="text-muted">{testimonial.content}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="py-20 bg-primary">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+          Comment démarrer ?
+        </h2>
+        <div class="grid md:grid-cols-4 gap-8">
+          {steps.map(step => (
+            <div class="relative">
+              <div class="text-accent text-5xl font-bold mb-4">{step.number}</div>
+              <h3 class="text-xl font-bold mb-3">{step.title}</h3>
+              <p class="text-muted">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-secondary">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Prêt à améliorer votre trading ?
+        </h2>
+        <p class="text-xl text-muted mb-8 max-w-2xl mx-auto">
+          Rejoignez les traders qui ont déjà transformé leur approche
+        </p>
+        <Button href="#" variant="primary" class="chat-trigger">
+          Commencer maintenant
+        </Button>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Chat trigger
+  document.querySelectorAll('.chat-trigger').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.Tawk_API) {
+        Tawk_API.maximize();
+      }
+    });
+  });
+
+  // Counter animation
+  const animateCounter = (element, target) => {
+    const duration = 2000; // Animation duration in milliseconds
+    const steps = 50; // Number of steps
+    const stepDuration = duration / steps;
+    let current = 0;
+    
+    const increment = target / steps;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        element.textContent = Math.round(target);
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.round(current);
+      }
+    }, stepDuration);
+  };
+
+  // Intersection Observer for counter animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = parseInt(counter.getAttribute('data-target'));
+        animateCounter(counter, target);
+        observer.unobserve(counter);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  // Observe all counter elements
+  document.querySelectorAll('.counter').forEach(counter => {
+    observer.observe(counter);
+  });
+</script>

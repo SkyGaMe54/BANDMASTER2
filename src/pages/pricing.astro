@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const features = [
+  "Signaux précis et fiables",
+  "Analyse avancée des tendances",
+  "Alertes personnalisables",
+  "Multi-marchés",
+  "Support communautaire",
+  "Mises à jour régulières",
+  "Période d'essai gratuite",
+  "Accès au canal Slack"
+];
+
+const steps = [
+  {
+    number: "01",
+    title: "Contactez-nous",
+    description: "Utilisez le chat en bas à droite pour plus d'informations"
+  },
+  {
+    number: "02",
+    title: "Effectuez le virement",
+    description: "Accédez à l'indicateur dès réception du paiement"
+  },
+  {
+    number: "03",
+    title: "Envoyez vos informations",
+    description: "Preuve de paiement et pseudo TradingView"
+  },
+  {
+    number: "04",
+    title: "Commencez à trader",
+    description: "Profitez de signaux clairs et précis"
+  }
+];
+---
+
+<Layout title="Tarifs - BandMaster">
+  <main>
+    <section class="py-20 bg-primary relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(44,153,113,0.1),transparent_50%)]"></div>
+      <div class="container mx-auto px-4 relative">
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Une formule simple,</h1>
+            <p class="text-2xl md:text-3xl text-accent">des résultats exceptionnels</p>
+          </div>
+
+          <div class="relative group">
+            <!-- Neon effect layers -->
+            <div class="absolute -inset-0.5 bg-accent opacity-75 blur-lg group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <div class="absolute -inset-1 bg-gradient-to-r from-accent/50 to-accent-light/50 blur-2xl opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+            
+            <!-- Main content -->
+            <div class="relative bg-secondary rounded-2xl p-8 md:p-12 border border-accent/20">
+              <div class="text-center mb-8">
+                <h2 class="text-6xl md:text-7xl font-bold mb-4">
+                  150€<span class="text-2xl text-muted">/mois</span>
+                </h2>
+                <p class="text-xl text-muted">Accès complet à BandMaster</p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6 mb-12">
+                {features.map(feature => (
+                  <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div class="text-center">
+                <Button href="#" variant="primary" class="text-lg px-12 py-4 chat-trigger">
+                  Commencer maintenant
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-primary">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">Comment démarrer ?</h2>
+        <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          {steps.map(step => (
+            <div class="relative">
+              <div class="text-accent text-5xl font-bold mb-4">{step.number}</div>
+              <h3 class="text-xl font-bold mb-3">{step.title}</h3>
+              <p class="text-muted">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @keyframes tilt {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(0.5deg); }
+    75% { transform: rotate(-0.5deg); }
+  }
+  .animate-tilt {
+    animation: tilt 10s infinite linear;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.chat-trigger').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.Tawk_API) {
+        Tawk_API.maximize();
+      }
+    });
+  });
+</script>
